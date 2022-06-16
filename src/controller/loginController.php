@@ -2,7 +2,7 @@
     namespace loginController;
 
     if(empty($_POST["inputCpf"]) || empty($_POST["inputSenha"])) {
-        header('Location: ../view/loginView.php');
+        header('Location: ../view/loginView.php?error=true');
         return;
     }
 

@@ -1,3 +1,7 @@
+<?php 
+    $temErro = !empty($_GET['error']) && $_GET['error'] === 'true';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -22,6 +26,12 @@
                         
                         <label for="inputSenha" class="form-label">Senha</label>
                         <input type="password" class="form-control" id="inputSenha" name="inputSenha" placeholder="Digite sua senha">
+
+                        <?php if($temErro): ?>
+                            <div class="alert alert-danger mt-3" role="alert">
+                                Cpf ou senha errados. Verifique e tente novamente. 
+                            </div>
+                        <?php endif; ?>
     
                         <div class="w-100 d-flex justify-content-end mt-3">
                             <button type="submit" class="btn rounded buttonPrimary">Logar</button>
