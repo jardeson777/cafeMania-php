@@ -3,7 +3,6 @@
 namespace ProdutoDTO;
 
 Class ProdutoDTO {
-
     private $id, $nome, $preco, $estoque;
 
     public function __construct(int $id, string $nome, float $preco, int $estoque)

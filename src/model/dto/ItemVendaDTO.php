@@ -3,7 +3,6 @@
 namespace ItemVendaDTO;
 
 Class ItemVendaDTO{
-
     private $id, $id_venda,	$id_produto, $valor_unitario, $quant_item;
 
     public function __construct(int $id, int $id_venda, float $valor_unitario, int $quant_item)
