@@ -11,7 +11,7 @@
 
     class LoginController {
         public function Logar(){
-
+            
         }
     }
 
