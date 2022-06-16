@@ -3,8 +3,6 @@
 namespace UsuarioDTO;
 
 Class UsuarioDTO{
-
-
     private $id, $nome, $cpf, $senha, $cargo;
 
     public function __construct(int $id, string $nome, string $cpf, string $senha, string $cargo){

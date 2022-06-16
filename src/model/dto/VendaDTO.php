@@ -3,8 +3,6 @@
 namespace VendaDTO;
 
 Class VendaDTO {
-
-
     private $id, $id_cliente, $valor_total, $data_venda, $pagamento;
 
     public function __construct(int $id, int $id_cliente, float $valor_total, $data_venda,string $pagamento)
