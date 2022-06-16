@@ -1,25 +1,27 @@
 <?php
-    namespace UsuarioDao;
+    namespace UsuariosDao;
 
-    include '../connection.php';
+    require('../connection.php');
+    use Conexao\ConexaoBanco;
 
     class UsuariosDao {
         private $connection;
 
         function __construct(){
-            $this->connection = getConnection();
+            $conexaoBanco = new ConexaoBanco();
+            $this->connection = $conexaoBanco->getConnection();
         }
         
         public function getUsuarioByCpfAndSenha($cpf, $senha){
             $sql = 'SELECT * FROM usuarios WHERE cpf=? AND senha=?';
 
             $stmt = $this->connection->prepare($sql);
-            $stmt->bindValue(1, $cpf);   
-            $stmt->bindValue(2, $senha);   
+            $stmt->bindParam(1, $cpf);   
+            $stmt->bindParam(2, $senha);   
+            $stmt->execute();
+            $result = $stmt->fetchAll();
 
-            if($stmt->execute()){
-                
-            }
+            return $result;
         }
     }
 ?>
