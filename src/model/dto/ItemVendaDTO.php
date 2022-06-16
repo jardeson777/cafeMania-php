@@ -22,8 +22,6 @@ Class ItemVendaDTO{
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
     }
 
     public function getId_venda()
@@ -34,8 +32,6 @@ Class ItemVendaDTO{
     public function setId_venda($id_venda)
     {
         $this->id_venda = $id_venda;
-
-        return $this;
     }
 
     public function getId_produto()
@@ -46,8 +42,6 @@ Class ItemVendaDTO{
     public function setId_produto($id_produto)
     {
         $this->id_produto = $id_produto;
-
-        return $this;
     }
 
     public function getValor_unitario()
@@ -58,8 +52,6 @@ Class ItemVendaDTO{
     public function setValor_unitario($valor_unitario)
     {
         $this->valor_unitario = $valor_unitario;
-
-        return $this;
     }
 
     public function getQuant_item()
@@ -70,7 +62,5 @@ Class ItemVendaDTO{
     public function setQuant_item($quant_item)
     {
         $this->quant_item = $quant_item;
-
-        return $this;
     }
 }

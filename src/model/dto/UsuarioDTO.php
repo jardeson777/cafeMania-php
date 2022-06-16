@@ -23,8 +23,6 @@ Class UsuarioDTO{
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
     }
 
     public function getNome()
@@ -35,8 +33,6 @@ Class UsuarioDTO{
     public function setNome($nome)
     {
         $this->nome = $nome;
-
-        return $this;
     }
 
     public function getCpf()
@@ -47,8 +43,6 @@ Class UsuarioDTO{
     public function setCpf($cpf)
     {
         $this->cpf = $cpf;
-
-        return $this;
     }
 
     public function getSenha()
@@ -59,8 +53,6 @@ Class UsuarioDTO{
     public function setSenha($senha)
     {
         $this->senha = $senha;
-
-        return $this;
     }
 
     public function getCargo()
@@ -71,8 +63,6 @@ Class UsuarioDTO{
     public function setCargo($cargo)
     {
         $this->cargo = $cargo;
-
-        return $this;
     }
 }
 ?>

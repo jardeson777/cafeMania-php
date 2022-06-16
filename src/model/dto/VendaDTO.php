@@ -12,7 +12,7 @@ Class VendaDTO {
         $this->id = $id;
         $this->id_cliente = $id_cliente;
         $this->valor_total = $valor_total;
-        $this->$data_venda = $data_venda;
+        $this->data_venda = $data_venda;
         $this->pagamento = $pagamento;
     }
 

@@ -22,8 +22,6 @@ Class ProdutoDTO {
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
     }
 
     public function getNome()
@@ -34,8 +32,6 @@ Class ProdutoDTO {
     public function setNome($nome)
     {
         $this->nome = $nome;
-
-        return $this;
     }
 
     public function getPreco()
@@ -46,8 +42,6 @@ Class ProdutoDTO {
     public function setPreco($preco)
     {
         $this->preco = $preco;
-
-        return $this;
     }
 
     public function getEstoque()
@@ -58,8 +52,6 @@ Class ProdutoDTO {
     public function setEstoque($estoque)
     {
         $this->estoque = $estoque;
-
-        return $this;
     }
 }
 
