@@ -1,19 +1,37 @@
-<?php 
-    namespace loginController;
+<?php
 
-    require('../model/dao/UsuariosDAO.php');
-    use UsuariosDao\UsuariosDao;
-    
-    if(empty($_POST["inputCpf"]) || empty($_POST["inputSenha"])) {
-        header('Location: ../model/connection.php');
-        return;
-    }
-    
-    $cpf = $_POST["inputCpf"];
-    $senha = $_POST["inputSenha"];
+namespace controller;
+
+require '../model/dao/UsuariosDAO.php';
+
+use dao\UsuariosDao;
+
+class LoginController
+{
+  function logar($cpf, $senha)
+  {
     $usuarioDao = new UsuariosDao();
-    $dados = $usuarioDao->getUsuarioByCpfAndSenha($cpf, $senha);
+    $usuarioLogado = $usuarioDao->getUsuarioByCpfAndSenha($cpf, $senha);
 
-    echo 'a';
-?>
-loginController
+    $usuarioLogado->getCargo() === 'gerente'
+      ? header('Location: ../view/gerente/homeGerente.php')
+      : header('Location: ../view/atendente/homeAtendente.php');
+  }
+
+  function deslogar()
+  {
+    //
+  }
+}
+
+$cpf = $_POST["inputCpf"];
+$senha = $_POST["inputSenha"];
+$validandoParametro = !empty($cpf) && !empty($senha);
+
+if (!$validandoParametro) {
+  header('Location: ../view/loginView.php');
+  return;
+}
+
+$login = new LoginController();
+$login->logar($cpf, $senha);
