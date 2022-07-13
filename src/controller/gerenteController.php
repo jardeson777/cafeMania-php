@@ -3,10 +3,8 @@
 namespace controller;
 
 require $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dao/ProdutosDAO.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dto/ProdutoDTO.php';
 
 use dao\ProdutoDAO;
-use dto\ProdutoDTO;
 
 session_start();
 class GerenteController
@@ -30,10 +28,10 @@ class GerenteController
     return $response;
   }
 
-  public function incluirProduto(ProdutoDTO $produto)
+  public function incluirProduto($nome, $preco, $estoque)
   {
     $produtoDAO = new ProdutoDAO();
-    $response = $produtoDAO->incluirProduto($produto);
+    $response = $produtoDAO->incluirProduto($nome, $preco, $estoque);
     return $response;
   }
 }
@@ -67,14 +65,8 @@ if ($requestWasPost) {
     $nome = $_POST['nome'];
     $preco = $_POST['preco'];
     $estoque = $_POST['estoque'];
-    $produto = new ProdutoDTO(
-      0,
-      $nome,
-      $preco,
-      $estoque
-    );
 
-    $response = $controller->incluirProduto($produto);
+    $response = $controller->incluirProduto($nome, $preco, $estoque);
 
     if ($response) {
       $_SESSION['success'] = 'Produto adicionado com sucesso';

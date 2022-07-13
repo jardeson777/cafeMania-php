@@ -71,15 +71,15 @@ class ProdutoDAO
     }
   }
 
-  public function incluirProduto(ProdutoDTO $produto)
+  public function incluirProduto($nome, $preco, $estoque)
   {
     try {
       $sql = "INSERT INTO produtos (nome, preco, estoque) VALUES (?, ?, ?)";
 
       $stmt = $this->connection->prepare($sql);
-      $stmt->bindParam(1, $produto->getNome());
-      $stmt->bindParam(2, $produto->getPreco());
-      $stmt->bindParam(3, $produto->getEstoque());
+      $stmt->bindParam(1, $nome);
+      $stmt->bindParam(2, $preco);
+      $stmt->bindParam(3, $estoque);
       $stmt->execute();
       $stmt->fetchAll();
 
