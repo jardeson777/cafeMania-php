@@ -18,7 +18,7 @@ class LoginController
     }
 
     $usuarioLogado->getCargo() === 'gerente'
-      ? header('Location: ../view/gerente/homeGerente.php')
+      ? header('Location: ../view/gerente/')
       : header('Location: ../view/atendente/homeAtendente.php');
   }
 

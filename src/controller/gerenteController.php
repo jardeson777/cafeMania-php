@@ -8,6 +8,7 @@ require '../model/dto/ProdutoDTO.php';
 use dao\ProdutoDAO;
 use dto\ProdutoDTO;
 
+session_start();
 class GerenteController
 {
   public function listarProdutos()
@@ -23,6 +24,8 @@ class GerenteController
     $produtoDAO = new ProdutoDAO();
     $response = $produtoDAO->excluirProduto($id);
 
+    unset($_SESSION["produtos"]);
+
     var_dump($response);
     return $response;
   }
@@ -32,8 +35,6 @@ $requestWasPost = isset($_POST);
 $requestWasGet = isset($_GET);
 
 if ($requestWasPost) {
-  session_start();
-
   $action = $_POST["action"];
   $controller = new GerenteController();
 
@@ -46,7 +47,6 @@ if ($requestWasPost) {
   if ($action === 'excluirProduto') {
     $id = $_POST['id'];
     $response = $controller->excluirProduto($id);
-    session_start();
 
     if ($response) {
       $_SESSION['success'] = 'Produto excluído com sucesso';

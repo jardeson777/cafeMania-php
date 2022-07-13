@@ -2,6 +2,10 @@
 <html lang="pt-br">
 <?php
 session_start();
+$produtos = null;
+if (empty($_SESSION['produtos'])) {
+  header("Location: /projetos/CafeMania/src/view/gerente");
+}
 $produtos = $_SESSION['produtos'];
 ?>
 
