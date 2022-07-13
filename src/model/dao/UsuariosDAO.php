@@ -29,6 +29,10 @@ class UsuariosDao
     $stmt->execute();
     $result = $stmt->fetchAll()[0];
 
+    if (empty($result)) {
+      return null;
+    }
+
     $usuario = new UsuarioDTO(
       $result['id'],
       $result['nome'],

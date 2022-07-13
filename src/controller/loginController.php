@@ -13,6 +13,10 @@ class LoginController
     $usuarioDao = new UsuariosDao();
     $usuarioLogado = $usuarioDao->getUsuarioByCpfAndSenha($cpf, $senha);
 
+    if (empty($usuarioLogado)) {
+      header('Location: ../view/loginView.php');
+    }
+
     $usuarioLogado->getCargo() === 'gerente'
       ? header('Location: ../view/gerente/homeGerente.php')
       : header('Location: ../view/atendente/homeAtendente.php');
