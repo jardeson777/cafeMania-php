@@ -12,7 +12,7 @@ class ProdutoDAO
   private $connection;
 
   /*
-    No construtor da classe, é a parte em que o DAO abre a contexão com o banco de dados
+    No construtor da classe, é a parte em que o DAO abre a conexão com o banco de dados
     Instanciando um objeto do tipo ConexaoBanco, na qual possui o método getConnection
     Logo em seguida, ele atribui o valor da operação feita com o objeto na variável
     connection, que passa a ser utilizada nos métodos do UsuariosDao, evitando assim
