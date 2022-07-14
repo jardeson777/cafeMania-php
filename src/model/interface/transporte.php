@@ -7,10 +7,10 @@ Interface é responsável por instanciar as classes de transporte
 que possuem métodos e atributos semelhantes.
 */
 
-interface Transport
+interface Transporte
 {
   /*
     função que busca os dados para geração do relatório
   */
-  public function BuscarDados(string $query);
+  public function entrega();
 }
