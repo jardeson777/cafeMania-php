@@ -4,18 +4,17 @@ namespace dto;
 
 class UsuarioDTO
 {
-  private $id, $nome, $cpf, $senha, $cargo;
+  private $id, $nome, $cpf, $cargo;
 
   /*
   Construtor da classe UsuarioDTO
-  Params: id, nome, cpf, senha, cargo.
+  Params: id, nome, cpf, cargo.
   */
-  public function __construct(int $id, string $nome, string $cpf, string $senha, string $cargo)
+  public function __construct(int $id, string $nome, string $cpf, string $cargo)
   {
     $this->id = $id;
     $this->nome = $nome;
     $this->cpf = $cpf;
-    $this->senha = $senha;
     $this->cargo = $cargo;
   }
 
@@ -27,7 +26,7 @@ class UsuarioDTO
     return $this->id;
   }
 
-   /*
+  /*
   define um valor para o id do Usuario
   */
   public function setId($id)

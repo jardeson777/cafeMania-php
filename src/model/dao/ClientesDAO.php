@@ -10,13 +10,6 @@ use dto\UsuarioDTO;
 use \PDOException;
 
 
-    /*
-    No construtor da classe, é a parte em que o DAO abre a conexão com o banco de dados
-    Instanciando um objeto do tipo ConexaoBanco, na qual possui o método getConnection
-    Logo em seguida, ele atribui o valor da operação feita com o objeto na variável
-    connection, que passa a ser utilizada nos métodos do UsuariosDAO, evitando assim
-    a repetição de código de sempre ter que abrir a conexão em cada método.
-  */
 class ClienteDAO
 {
   private $connection;
@@ -34,7 +27,32 @@ class ClienteDAO
     $this->connection = $conexaoBanco->getConnection();
   }
 
-    /*
+  public function getClienteByCPF($cpf, $senha)
+  {
+    $sql = 'SELECT * FROM clientes WHERE cpf=? AND senha=?';
+
+    $stmt = $this->connection->prepare($sql);
+    $stmt->bindParam(1, $cpf);
+    $stmt->bindParam(2, $senha);
+    $stmt->execute();
+    $result = $stmt->fetchAll()[0];
+
+    if (empty($result)) {
+      return null;
+    }
+
+    $usuario = new UsuarioDTO(
+      $result['id'],
+      $result['nome'],
+      $result['cpf'],
+      'cliente'
+    );
+
+    //retorna o Funcionário
+    return $usuario;
+  }
+
+  /*
   Esse método é responsável por fazer uma requisição ao banco, e retornando 
   todos os clientes que existem dentro do banco, para que possam ser mostrados na tela,
   por exemplo.
@@ -54,7 +72,7 @@ class ClienteDAO
     return $result;
   }
 
-    /*
+  /*
   Método responsável pela exclusão de um cliente por um ID solicitado como parametro
   Acessando o banco de dados, procurando o cliente que tem o ID informado.
   Logo após, são feitos os passos para exclusão do cliente.
