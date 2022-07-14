@@ -19,6 +19,7 @@ class RelatoriosVendaBuilder
     $result = $stmt->fetchAll();
 
     if (empty($result)) return null;
+
     return $result;
   }
 
