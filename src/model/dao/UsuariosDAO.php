@@ -2,9 +2,9 @@
 
 namespace dao;
 
-require 'connection.php';
+require_once  'connection.php';
 
-require $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dto/UsuarioDTO.php';
+require_once  $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dto/UsuarioDTO.php';
 
 use Conexao\ConexaoBanco;
 use dto\UsuarioDTO;
@@ -13,7 +13,7 @@ class UsuariosDAO
 {
   private $connection;
 
-    /*
+  /*
     No construtor da classe, é a parte em que o DAO abre a conexão com o banco de dados
     Instanciando um objeto do tipo ConexaoBanco, na qual possui o método getConnection
     Logo em seguida, ele atribui o valor da operação feita com o objeto na variável

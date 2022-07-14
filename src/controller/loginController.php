@@ -2,9 +2,11 @@
 
 namespace controller;
 
-require '../model/dao/UsuariosDAO.php';
+require_once  '../model/dao/UsuariosDAO.php';
+require_once  '../model/dao/ClientesDAO.php';
 
-use dao\UsuariosDAO;
+use dao\UsuariosDao;
+use dao\ClienteDAO;
 
 class LoginController
 {
@@ -14,12 +16,18 @@ class LoginController
     $usuarioLogado = $UsuarioDao->getUsuarioByCpfAndSenha($cpf, $senha);
 
     if (empty($usuarioLogado)) {
-      header('Location: ../view/loginView.php');
+      $clienteDAO = new ClienteDAO();
+      $clienteLogado = $clienteDAO->getClienteByCPF($cpf, $senha);
+
+      if (empty($clienteLogado)) {
+        header('Location: ../view/loginView.php');
+      }
+      header('Location: ../view/cliente');
     }
 
     $usuarioLogado->getCargo() === 'gerente'
       ? header('Location: ../view/gerente/')
-      : header('Location: ../view/atendente/homeAtendente.php');
+      : header('Location: ../view/atendente/');
   }
 
   function deslogar()

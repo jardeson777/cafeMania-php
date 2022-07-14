@@ -2,7 +2,7 @@
 
 namespace controller;
 
-require $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dao/ProdutosDAO.php';
+require_once  $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dao/ProdutosDAO.php';
 
 use dao\ProdutoDAO;
 
