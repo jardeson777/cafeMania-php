@@ -17,7 +17,7 @@ class ProdutoDAO
     No construtor da classe, é a parte em que o DAO abre a conexão com o banco de dados
     Instanciando um objeto do tipo ConexaoBanco, na qual possui o método getConnection
     Logo em seguida, ele atribui o valor da operação feita com o objeto na variável
-    connection, que passa a ser utilizada nos métodos do UsuariosDao, evitando assim
+    connection, que passa a ser utilizada nos métodos do UsuariosDAO, evitando assim
     a repetição de código de sempre ter que abrir a conexão em cada método.
   */
   function __construct()
@@ -71,11 +71,18 @@ class ProdutoDAO
     }
   }
 
+    /*
+  Método responsável por incluir um cliente no banco de dados,
+  recebendo nome, preco e estoque como parametro 
+  e adicionando essas informações no banco, gerando um ID para o mesmo
+  */
   public function incluirProduto($nome, $preco, $estoque)
   {
     try {
+      //comando que vai ser executado para inserção de um produto no banco
       $sql = "INSERT INTO produtos (nome, preco, estoque) VALUES (?, ?, ?)";
 
+      //abre a conexão com o banco e coloca o comando para ser executado
       $stmt = $this->connection->prepare($sql);
       $stmt->bindParam(1, $nome);
       $stmt->bindParam(2, $preco);
@@ -83,8 +90,10 @@ class ProdutoDAO
       $stmt->execute();
       $stmt->fetchAll();
 
+      //retorna true se a inserção for um sucesso
       return true;
     } catch (PDOException $e) {
+      //retorna false se a inserção der algum problema
       return false;
     }
   }

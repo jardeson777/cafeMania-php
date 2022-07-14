@@ -4,14 +4,14 @@ namespace controller;
 
 require '../model/dao/UsuariosDAO.php';
 
-use dao\UsuariosDao;
+use dao\UsuariosDAO;
 
 class LoginController
 {
   function logar($cpf, $senha)
   {
-    $usuarioDao = new UsuariosDao();
-    $usuarioLogado = $usuarioDao->getUsuarioByCpfAndSenha($cpf, $senha);
+    $UsuarioDao = new UsuariosDAO();
+    $usuarioLogado = $UsuarioDao->getUsuarioByCpfAndSenha($cpf, $senha);
 
     if (empty($usuarioLogado)) {
       header('Location: ../view/loginView.php');
