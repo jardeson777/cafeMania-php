@@ -9,6 +9,7 @@
 </head>
 
 <body>
+  <?php include('../../../includes/header.php') ?>
   <form action="" id="formPagamento">
     <label for="produto">Produto:</label>
     <select name="produto" id="produto">
@@ -67,6 +68,7 @@
       <button type="button">Pagamento efetuado</button>
     </div>
   </form>
+  <?php include('../../../includes/footer.php') ?>
 </body>
 
 </html>

@@ -10,6 +10,7 @@
 
 <body>
   <h1>Lista de Produtos</h1>
+  <?php include('../../../includes/footer.php') ?>
 </body>
 
 </html>
