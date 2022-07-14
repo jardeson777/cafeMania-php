@@ -27,29 +27,49 @@ class ClienteDAO
     $this->connection = $conexaoBanco->getConnection();
   }
 
+ /*
+  Esse método é responsável por retornar o cliente solicitado pelo cpf e senha informado
+  Para que isso aconteça, é necessário que a conexão com o banco de dados seja aberta
+  para que possamos fazer a consulta no mesmo e pegar os recursos solicitados
+  Temos como parametro CPF e SENHA, na qual são atributos que existem no banco e que funcionam como
+  dados de acesso ao sistema.
+  */
   public function getClienteByCPF($cpf, $senha)
   {
     $sql = 'SELECT * FROM clientes WHERE cpf=? AND senha=?';
 
+   /*
+    Aqui é onde a conexão com o banco é feita, usando o comando que foi criado em SQL na linha 38
+    na qual as interrogações são substituidas pelo cpf e senha vindos como parametro.
+    */
     $stmt = $this->connection->prepare($sql);
     $stmt->bindParam(1, $cpf);
     $stmt->bindParam(2, $senha);
     $stmt->execute();
     $result = $stmt->fetchAll()[0];
 
+    /*
+    Caso o funcionário não exista no banco, ele irá retornar null, mostrando na view que
+    o usuário informado não existe
+    */
     if (empty($result)) {
       return null;
     }
 
-    $usuario = new UsuarioDTO(
+    /*
+    Caso o Funcionário exista, ele irá retortar o mesmo, com seus dados e cargo, para que
+    seja feita a manipulação de telas de acordo com seu cargo e mostrando a tela que ele 
+    deve ter o acesso.
+    */
+    $cliente = new UsuarioDTO(
       $result['id'],
       $result['nome'],
       $result['cpf'],
       'cliente'
     );
 
-    //retorna o Funcionário
-    return $usuario;
+    //retorna o Usuario
+    return $cliente;
   }
 
   /*
