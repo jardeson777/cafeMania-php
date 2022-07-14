@@ -2,7 +2,7 @@
 
 define("PATH", __DIR__);
 
-require 'src/utils/php/utils.php';
+require_once  'src/utils/php/utils.php';
 
 use utils\UtilsController;
 

@@ -2,8 +2,8 @@
 
 namespace dao;
 
-require 'connection.php';
-require $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dto/ProdutoDTO.php';
+require_once  'connection.php';
+require_once  $_SERVER['DOCUMENT_ROOT'] . '/projetos/CafeMania/src/model/dto/ProdutoDTO.php';
 
 use Conexao\ConexaoBanco;
 use dto\ProdutoDTO;
