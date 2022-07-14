@@ -5,7 +5,7 @@ namespace dto;
 class UsuarioDTO
 {
   private $id, $nome, $cpf, $cargo;
-
+  private static $instance;
   /*
   Construtor da classe UsuarioDTO
   Params: id, nome, cpf, cargo.
@@ -80,5 +80,15 @@ class UsuarioDTO
   public function setCargo($cargo)
   {
     $this->cargo = $cargo;
+  }
+
+  public static function getInstance(int $id, string $nome, string $cpf, string $cargo)
+  {
+    if ($cargo === 'gerente') {
+      if (self::$instance === null) {
+        self::$instance = new self($id, $nome, $cpf, $cargo);
+      }
+      return self::$instance;
+    }
   }
 }

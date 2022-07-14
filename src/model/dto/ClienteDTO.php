@@ -7,6 +7,7 @@ namespace dto;
 class ClienteDTO
 {
   private $id, $nome, $endereco, $email, $cpf, $senha;
+  private static $instance;
 
   /*
   Construtor da classe ClienteDTO
@@ -116,5 +117,13 @@ class ClienteDTO
   public function setSenha($senha)
   {
     $this->senha = $senha;
+  }
+
+  public static function getInstance(int $id, String $nome, String $endereco, String $email, $cpf, string $senha)
+  {
+    if (self::$instance === null) {
+      self::$instance = new self($id, $nome, $endereco, $email, $cpf, $senha);
+    }
+    return self::$instance;
   }
 }
